@@ -57,7 +57,8 @@ export default StyleSheet.create({
 
     arrDeptTime: {
         fontSize: 28,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color:'gray'
     },
 
     cityCode: {
@@ -147,6 +148,7 @@ export default StyleSheet.create({
         fontSize: 14,
         fontWeight: '600',
         width: '50%',
+        color:'gray'
         // paddingLeft:10
     }
 });

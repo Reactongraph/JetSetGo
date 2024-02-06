@@ -206,12 +206,14 @@ export default StyleSheet.create({
 
     totalDuration: {
         fontSize: 18,
-        fontWeight: '700'
+        fontWeight: '700',
+        color:'gray'
     },
 
     arrDeptTime: {
         fontSize: 24,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color:'gray'
     },
 
     cityCode: {
@@ -249,7 +251,8 @@ export default StyleSheet.create({
     priceFilterText: {
         marginRight: 5,
         fontSize: 14,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color:'gray'
     },
     selectItem: {
         width: '100%',
