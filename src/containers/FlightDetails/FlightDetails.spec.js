@@ -30,4 +30,59 @@ describe('FlightDetails', () => {
     expect(yourComponent.props.children).toBe(airlineName);
     
   });
+
+  it('checking Fare', () => {
+    const testId = 'fare-details'; 
+    const fare = 3840;
+
+    const { getByTestId } = render(<FlightDetails route={Data} />); 
+    
+    const yourComponent = getByTestId(testId);
+    expect(yourComponent.props.children).toBe(fare);
+    
+  });
+
+  it('checking Source Airport Name', () => {
+    const testId = 'source-airport-name'; 
+    const airportName = "Indira Gandhi Airport";
+
+    const { getByTestId } = render(<FlightDetails route={Data} />); 
+    
+    const yourComponent = getByTestId(testId);
+    expect(yourComponent.props.children).toBe(airportName);
+    
+  });
+
+  it('checking Destination Airport Name', () => {
+    const testId = 'destination-airport-name'; 
+    const airportName = "Mumbai";
+
+    const { getByTestId } = render(<FlightDetails route={Data} />); 
+    
+    const yourComponent = getByTestId(testId);
+    expect(yourComponent.props.children).toBe(airportName);
+    
+  });
+
+  it('checking Source City Code', () => {
+    const testId = 'source-city-code'; 
+    const cityCode = "DEL";
+
+    const { getByTestId } = render(<FlightDetails route={Data} />); 
+    
+    const yourComponent = getByTestId(testId);
+    expect(yourComponent.props.children).toBe(cityCode);
+    
+  });
+
+  it('checking Destination City Code', () => {
+    const testId = 'destination-city-code'; 
+    const cityCode = "BOM";
+
+    const { getByTestId } = render(<FlightDetails route={Data} />); 
+    
+    const yourComponent = getByTestId(testId);
+    expect(yourComponent.props.children).toBe(cityCode);
+    
+  });
 });
