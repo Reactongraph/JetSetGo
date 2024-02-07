@@ -9,7 +9,7 @@ import FlightDetails from './src/containers/FlightDetails';
 
 const Stack = createStackNavigator();
 
-function App(): React.JSX.Element {
+function App() {
 
   useEffect(() => {
     SplashScreen.hide();

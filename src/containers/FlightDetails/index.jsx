@@ -1,10 +1,9 @@
-import { View, Image, Text, SafeAreaView, Pressable, FlatList, Linking } from 'react-native';
+import { View, Image, Text, SafeAreaView, Pressable } from 'react-native';
 import styles from "./styles"
-import RupeesIcon from '../../assets/images/rupees.jpeg';
-import flightdistancelogo from '../../assets/images/FlightDistancelogo.png';
+import {Rupees, FlightDistancelogo} from '../../assets/images/index'
+
 export default function FlightDetails({ route }) {
     const flight = route.params.flight
-    console.log("routetetettete", flight)
     const dateTimeDeptString = flight?.displayData?.source?.depTime;
     const dateTimeArrString = flight?.displayData?.destination?.arrTime;
     const deptDateTime = new Date(dateTimeDeptString);
@@ -26,7 +25,7 @@ export default function FlightDetails({ route }) {
                     <Text style={styles.arrDeptTime}>{hoursOfDept}.{minutesOfDept}</Text>
                     <Text style={styles.cityCode}>{flight?.displayData?.source?.airport?.cityCode}</Text>
                 </View>
-                <Image source={flightdistancelogo} style={{ alignSelf: 'baseline' }} />
+                <Image source={FlightDistancelogo} style={{ alignSelf: 'baseline' }} />
                 <View >
                     <Text style={[styles.arrDeptTime, { textAlign: 'right' }]}>{hoursOfArr}.{minutesOfArr}</Text>
                     <Text style={[styles.cityCode, { textAlign: 'right' }]}>{flight?.displayData?.destination?.airport?.cityCode}</Text>
@@ -38,7 +37,7 @@ export default function FlightDetails({ route }) {
             </View>
             <View style={styles.fareContainer}>
                 <Text style={styles.flightfareText}>Price: </Text>
-                <Text style={styles.flightfarePriceText}><Image style={{ width: 20, height: 20 }} source={RupeesIcon} />{flight.fare}</Text>
+                <Text style={styles.flightfarePriceText}><Image style={{ width: 20, height: 20 }} source={Rupees} />{flight.fare}</Text>
             </View>
             <View>
                 <Pressable style={styles.searchButton} onPress={() => null}><Text style={styles.searchText}>Confirm Booking</Text></Pressable>

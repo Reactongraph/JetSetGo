@@ -10,7 +10,6 @@ export default StyleSheet.create({
         padding: 24,
         borderRadius: 8,
         backgroundColor: '#ffffff',
-        // marginBottom: 16,
         justifyContent: 'space-between',
         height: '60%'
     },
@@ -149,6 +148,5 @@ export default StyleSheet.create({
         fontWeight: '600',
         width: '50%',
         color:'gray'
-        // paddingLeft:10
     }
 });

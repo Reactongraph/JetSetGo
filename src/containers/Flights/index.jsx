@@ -1,31 +1,29 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { View, Image, Text, SafeAreaView, Pressable, FlatList, Linking } from 'react-native';
+import { CheckIcon, Select } from 'native-base';
 
 import api from '../../services/api';
-import logo from '../../assets/images/logo.png';
-import flightdistancelogo from '../../assets/images/FlightDistancelogo.png';
-import ArrowDownUp from '../../assets/images/ArrowsDownUp.png';
+import {
+    ArrowDownUp,
+    FlightDistancelogo,
+    Logo,
+    Rupees,
+    Settings
+} from '../../assets/images/index';
 import styles from './styles';
-import { CheckIcon, Select } from 'native-base';
-import SettingsLogo from '../../assets/images/Settings.png';
-import RupeesIcon from '../../assets/images/rupees.jpeg';
 
 export default function Flights() {
     const navigation = useNavigation();
-
     const [service, setService] = useState("");
     const [flights, setFlights] = useState([]);
     const [flightsData, setFlightsdata] = useState([]);
-    const [loading, setLoading] = useState(false);
     const [priceOrder, setPriceOrder] = useState('asc');
 
     async function loadFlights() {
-        setLoading(true);
         const response = await api.get();
-        setFlights(handleSortByPrice(response.data.data.result));
-        setFlightsdata(response.data.data.result);
-        setLoading(false);
+        setFlights(handleSortByPrice(response?.data?.data?.result ));
+        setFlightsdata(response?.data?.data?.result );
     }
     useEffect(() => {
         loadFlights();
@@ -45,10 +43,8 @@ export default function Flights() {
 
     const handleSortByPrice = (data = []) => {
         if (priceOrder === "asc") {
-            console.log("in asc")
             return [...(data || [])]?.sort((a, b) => a.fare - b.fare)
         } else {
-            console.log("in desc")
             return [...(data || [])]?.sort((a, b) => b.fare - a.fare)
         }
     }
@@ -58,10 +54,10 @@ export default function Flights() {
                 <View style={styles.header}>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <Text style={styles.headerText}>JetSetGo</Text>
-                        <Image style={styles.logo} source={logo} />
+                        <Image style={styles.logo} source={Logo} />
                     </View>
                     <Pressable style={styles.filterContainer} onPress={() => Linking.openSettings()}>
-                        <Image style={styles.filter} source={SettingsLogo} />
+                        <Image style={styles.filter} source={Settings} />
                     </Pressable>
                 </View>
                 <View style={styles.headingContainer}>
@@ -123,7 +119,7 @@ export default function Flights() {
                                     <Text style={styles.arrDeptTime}>{hoursOfDept}.{minutesOfDept}</Text>
                                     <Text style={styles.cityCode}>{flight?.displayData?.source?.airport?.cityCode} ({flight?.displayData?.source?.airport?.cityName})</Text>
                                 </View>
-                                <Image source={flightdistancelogo} style={{ alignSelf: 'baseline', width: '40%' }} />
+                                <Image source={FlightDistancelogo} style={{ alignSelf: 'baseline', width: '40%' }} />
                                 <View >
                                     <Text style={[styles.arrDeptTime, { textAlign: 'right' }]}>{hoursOfArr}.{minutesOfArr}</Text>
                                     <Text style={styles.cityCode}>{flight?.displayData?.destination?.airport?.cityCode}  ({flight?.displayData?.destination?.airport?.cityName})</Text>
@@ -131,7 +127,7 @@ export default function Flights() {
                             </View>
                             <View style={styles.fareContainer}>
                                 <Text style={styles.flightfareText}>Price: </Text>
-                                <Text style={styles.flightfarePriceText}><Image style={{ width: 20, height: 20 }} source={RupeesIcon} />{flight.fare}</Text>
+                                <Text style={styles.flightfarePriceText}><Image style={{ width: 20, height: 20 }} source={Rupees} />{flight.fare}</Text>
                             </View>
                             <View>
                                 <Pressable style={styles.searchButton} onPress={() => handleFlightDetails(flight)}><Text style={styles.searchText}>Check</Text></Pressable>
