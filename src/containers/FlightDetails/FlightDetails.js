@@ -2,8 +2,8 @@ import { View, Image, Text, SafeAreaView, Pressable } from 'react-native';
 import styles from "./styles"
 import {Rupees, FlightDistancelogo} from '../../assets/images/index'
 
-export default function FlightDetails({ route }) {
-    const flight = route.params.flight
+export default function FlightDetails({ route={} }) {
+    const flight = route?.params?.flight
     const dateTimeDeptString = flight?.displayData?.source?.depTime;
     const dateTimeArrString = flight?.displayData?.destination?.arrTime;
     const deptDateTime = new Date(dateTimeDeptString);
@@ -13,11 +13,11 @@ export default function FlightDetails({ route }) {
     const minutesOfDept = deptDateTime.getMinutes();
     const minutesOfArr = arrDateTime.getMinutes();
 
-    return <SafeAreaView style={{ flex: 1 }}>
+    return <SafeAreaView style={{ flex: 1 }} testID="flight-details">
         <View style={styles.flightContainer}>
             <View style={styles.flightSubContainer}>
                 <View style={styles.airlineNameContainer}>
-                    <Text style={styles.alirlineName}>{flight?.displayData?.airlines[0]?.airlineName}</Text>
+                    <Text style={styles.alirlineName} testID='flight-details-airlineName'>{flight?.displayData?.airlines[0]?.airlineName}</Text>
                 </View>
             </View>
             <View style={[styles.flightSubContainer]}>
@@ -37,7 +37,7 @@ export default function FlightDetails({ route }) {
             </View>
             <View style={styles.fareContainer}>
                 <Text style={styles.flightfareText}>Price: </Text>
-                <Text style={styles.flightfarePriceText}><Image style={{ width: 20, height: 20 }} source={Rupees} />{flight.fare}</Text>
+               <View><Image style={{ width: 20, height: 20 }} source={Rupees} /><Text style={styles.flightfarePriceText}>{flight?.fare}</Text> </View> 
             </View>
             <View>
                 <Pressable style={styles.searchButton} onPress={() => null}><Text style={styles.searchText}>Confirm Booking</Text></Pressable>

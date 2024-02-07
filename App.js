@@ -4,8 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NativeBaseProvider } from "native-base";
 
-import Flights from './src/containers/Flights';
-import FlightDetails from './src/containers/FlightDetails';
+import Flights from './src/containers/Flights/Flights';
+import FlightDetails from './src/containers/FlightDetails/FlightDetails';
 
 const Stack = createStackNavigator();
 

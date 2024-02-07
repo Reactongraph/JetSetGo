@@ -49,7 +49,7 @@ export default function Flights() {
         }
     }
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1 }} testID='flights'>
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
