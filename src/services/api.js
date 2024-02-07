@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { BASE_URL } from '../Constants';
 
 const api = axios.create({
-    baseURL: 'https://api.npoint.io/4829d4ab0e96bfab50e7'
+    baseURL: BASE_URL
 });
 
 export default api;
